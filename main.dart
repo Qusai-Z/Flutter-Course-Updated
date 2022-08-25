@@ -21,59 +21,32 @@ class MyApp extends StatelessWidget {
             style: TextStyle(fontSize: 30),
           ),
         ),
-        body: Center(
-          child: Column(
-            children: [
-              Container(
-                height: 200,
-                width: double.infinity,
-                margin: EdgeInsets.all(10), // all : from all directions
-                // padding: EdgeInsets.symmetric(vertical: 20),  // UP and DOWN
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              height: 200,
+              width: double.infinity,
+              margin: EdgeInsets.all(10), // all : from all directions
+              // padding: EdgeInsets.symmetric(vertical: 20),  // UP and DOWN
 
-                padding: EdgeInsets.only(left: 5, top: 10, right: 5),
+              padding: EdgeInsets.only(left: 5, top: 10, right: 5),
+              alignment: Alignment.bottomCenter,
 
-                decoration: BoxDecoration(
+              decoration: BoxDecoration(
                   border: Border(
                     left: BorderSide(color: Colors.green, width: 20),
                   ),
                   color: Color.fromARGB(255, 65, 8, 135),
-                  image: DecorationImage(
-                      // kind of image: dynamic-static
-                      image: NetworkImage(
-                          'https://cdn.dribbble.com/users/2407143/screenshots/10349792/media/cfc2526bdfd3ae00cdf9b167ad821659.png?compress=1&resize=400x300&vertical=top'),
-                      fit: BoxFit.fill),
-                ),
-
-                child: Text(
-                  'FOCUS FSDFGFDBNGFDKLMNGKLDFJNHGLKJDLJFGKLDFJGKLDGJSKDNFKNLSDF',
-                  style: TextStyle(
-                      fontSize: 20,
-                      color: Color.fromARGB(255, 255, 255, 255),
-                      fontWeight: FontWeight.bold),
-                ),
+                  boxShadow: [
+                    BoxShadow(color: Colors.black, blurRadius: 20),
+                  ]),
+              child: Text(
+                'AL HAMD LLAH',
+                style: (TextStyle(color: Colors.white, fontSize: 30)),
               ),
-              Container(
-                height: 400,
-                width: double.infinity,
-                margin: EdgeInsets.all(10), // all : from all directions
-                // padding: EdgeInsets.symmetric(vertical: 20),  // UP and DOWN
-
-                padding: EdgeInsets.only(left: 5, top: 10, right: 5),
-
-                decoration: BoxDecoration(
-                  border: Border(
-                    left: BorderSide(color: Colors.green, width: 20),
-                  ),
-                  color: Color.fromARGB(255, 65, 8, 135),
-                  image: DecorationImage(
-                      // kind of images: dynamic-static
-                      image: NetworkImage(
-                          'https://cdn.dribbble.com/users/2407143/screenshots/10349792/media/cfc2526bdfd3ae00cdf9b167ad821659.png?compress=1&resize=400x300&vertical=top'),
-                      repeat: ImageRepeat.repeatY),
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
