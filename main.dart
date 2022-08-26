@@ -15,39 +15,26 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            'Practice',
-            style: TextStyle(fontSize: 30),
+          appBar: AppBar(
+            title: Text(
+              'Practice',
+              style: TextStyle(fontSize: 30),
+            ),
           ),
-        ),
-        body: Container(
-          color: Colors.red,
-          child: Column(
-            mainAxisSize: MainAxisSize
-                .min, // notice that the container height depends on column width
-
+          body: Stack(
             children: [
-              Text(
-                'AL HAMD LLAH',
-                style: (TextStyle(color: Colors.white, fontSize: 10)),
+              Container(
+                width: 200,
+                height: 200,
+                color: Colors.red,
               ),
-              Text(
-                'AL HAMD LLAH',
-                style: (TextStyle(color: Colors.white, fontSize: 10)),
-              ),
-              Text(
-                'AL HAMD LLAH',
-                style: (TextStyle(color: Colors.white, fontSize: 10)),
-              ),
-              Text(
-                'AL HAMD LLAH',
-                style: (TextStyle(color: Colors.white, fontSize: 10)),
-              ),
+              Container(
+                width: 100,
+                height: 100,
+                color: Color.fromARGB(255, 0, 192, 55),
+              )
             ],
-          ),
-        ),
-      ),
+          )),
     );
   }
 }
