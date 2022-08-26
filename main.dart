@@ -21,32 +21,25 @@ class MyApp extends StatelessWidget {
             style: TextStyle(fontSize: 30),
           ),
         ),
-        body: Center(
-          child: Row(
-            children: [
-              Expanded(
-                flex: 2,
-                child: Container(
-                  color: Colors.red,
-                  child: Text('WWW'),
+        body: 
+            Row(
+              children: [
+                Text('AAAAAAAA'),
+                VerticalDivider(
+                  color: Colors.black,
+                  width: 20,
                 ),
-              ),
-              Expanded(
-                flex: 1,
-                child: Container(
-                  color: Colors.blue,
-                  child: Text('WWW'),
+                Text('BBBBBBBBB'),
+                VerticalDivider(
+                  color: Colors.black,
+                  
+                  width: 20,
+                  
                 ),
-              ),
-              Expanded(
-                flex: 5,
-                child: Container(
-                  color: Colors.green,
-                  child: Text('WWW'),
-                ),
-              ),
-            ],
-          ),
+                Text('CCCCCCCCCC'),
+              ],
+            )
+          ],
         ),
       ),
     );
