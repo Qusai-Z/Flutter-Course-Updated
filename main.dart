@@ -21,32 +21,31 @@ class MyApp extends StatelessWidget {
             style: TextStyle(fontSize: 30),
           ),
         ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              height: 200,
-              width: double.infinity,
-              margin: EdgeInsets.all(10), // all : from all directions
-              // padding: EdgeInsets.symmetric(vertical: 20),  // UP and DOWN
+        body: Container(
+          color: Colors.red,
+          child: Column(
+            mainAxisSize: MainAxisSize
+                .min, // notice that the container height depends on column width
 
-              padding: EdgeInsets.only(left: 5, top: 10, right: 5),
-              alignment: Alignment.bottomCenter,
-
-              decoration: BoxDecoration(
-                  border: Border(
-                    left: BorderSide(color: Colors.green, width: 20),
-                  ),
-                  color: Color.fromARGB(255, 65, 8, 135),
-                  boxShadow: [
-                    BoxShadow(color: Colors.black, blurRadius: 20),
-                  ]),
-              child: Text(
+            children: [
+              Text(
                 'AL HAMD LLAH',
-                style: (TextStyle(color: Colors.white, fontSize: 30)),
+                style: (TextStyle(color: Colors.white, fontSize: 10)),
               ),
-            ),
-          ],
+              Text(
+                'AL HAMD LLAH',
+                style: (TextStyle(color: Colors.white, fontSize: 10)),
+              ),
+              Text(
+                'AL HAMD LLAH',
+                style: (TextStyle(color: Colors.white, fontSize: 10)),
+              ),
+              Text(
+                'AL HAMD LLAH',
+                style: (TextStyle(color: Colors.white, fontSize: 10)),
+              ),
+            ],
+          ),
         ),
       ),
     );
