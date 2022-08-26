@@ -15,26 +15,40 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-          appBar: AppBar(
-            title: Text(
-              'Practice',
-              style: TextStyle(fontSize: 30),
-            ),
+        appBar: AppBar(
+          title: Text(
+            'Practice',
+            style: TextStyle(fontSize: 30),
           ),
-          body: Stack(
+        ),
+        body: Center(
+          child: Row(
             children: [
-              Container(
-                width: 200,
-                height: 200,
-                color: Colors.red,
+              Expanded(
+                flex: 2,
+                child: Container(
+                  color: Colors.red,
+                  child: Text('WWW'),
+                ),
               ),
-              Container(
-                width: 100,
-                height: 100,
-                color: Color.fromARGB(255, 0, 192, 55),
-              )
+              Expanded(
+                flex: 1,
+                child: Container(
+                  color: Colors.blue,
+                  child: Text('WWW'),
+                ),
+              ),
+              Expanded(
+                flex: 5,
+                child: Container(
+                  color: Colors.green,
+                  child: Text('WWW'),
+                ),
+              ),
             ],
-          )),
+          ),
+        ),
+      ),
     );
   }
 }
