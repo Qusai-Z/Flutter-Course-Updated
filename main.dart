@@ -19,7 +19,27 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(title: Icon(Icons.menu)),
         body: Wrap(
           // master widget
+          direction: Axis.vertical,
+
           children: [
+            Container(
+              margin: EdgeInsets.all(10),
+              color: Colors.blue,
+              width: 90,
+              height: 90,
+            ),
+            Container(
+              margin: EdgeInsets.all(10),
+              color: Colors.blue,
+              width: 90,
+              height: 90,
+            ),
+            Container(
+              margin: EdgeInsets.all(10),
+              color: Colors.blue,
+              width: 90,
+              height: 90,
+            ),
             Container(
               margin: EdgeInsets.all(10),
               color: Colors.blue,
