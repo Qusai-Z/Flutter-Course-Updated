@@ -16,57 +16,60 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: AppBar(title: Icon(Icons.menu)),
-        body: Wrap(
+          appBar: AppBar(title: Icon(Icons.menu)),
+          body: SingleChildScrollView(
+            // you can only scroll when you scroll on the column..any other place on the screen are not allowed
+            scrollDirection: Axis.vertical,
+            child: Column(
+              children: [
+                Container(
+                  margin: EdgeInsets.all(10),
+                  color: Colors.blue,
+                  width: 90,
+                  height: 90,
+                ),
+                Container(
+                  margin: EdgeInsets.all(10),
+                  color: Colors.blue,
+                  width: 90,
+                  height: 90,
+                ),
+                Container(
+                  margin: EdgeInsets.all(10),
+                  color: Colors.blue,
+                  width: 90,
+                  height: 90,
+                ),
+                Container(
+                  margin: EdgeInsets.all(10),
+                  color: Colors.blue,
+                  width: 90,
+                  height: 90,
+                ),
+                Container(
+                  margin: EdgeInsets.all(10),
+                  color: Colors.blue,
+                  width: 90,
+                  height: 90,
+                ),
+                Container(
+                  margin: EdgeInsets.all(10),
+                  color: Colors.blue,
+                  width: 90,
+                  height: 90,
+                ),
+                Container(
+                  margin: EdgeInsets.all(10),
+                  color: Colors.blue,
+                  width: 90,
+                  height: 90,
+                ),
+              ],
+            ),
+          )
           // master widget
-          direction: Axis.vertical,
 
-          children: [
-            Container(
-              margin: EdgeInsets.all(10),
-              color: Colors.blue,
-              width: 90,
-              height: 90,
-            ),
-            Container(
-              margin: EdgeInsets.all(10),
-              color: Colors.blue,
-              width: 90,
-              height: 90,
-            ),
-            Container(
-              margin: EdgeInsets.all(10),
-              color: Colors.blue,
-              width: 90,
-              height: 90,
-            ),
-            Container(
-              margin: EdgeInsets.all(10),
-              color: Colors.blue,
-              width: 90,
-              height: 90,
-            ),
-            Container(
-              margin: EdgeInsets.all(10),
-              color: Colors.blue,
-              width: 90,
-              height: 90,
-            ),
-            Container(
-              margin: EdgeInsets.all(10),
-              color: Colors.blue,
-              width: 90,
-              height: 90,
-            ),
-            Container(
-              margin: EdgeInsets.all(10),
-              color: Colors.blue,
-              width: 90,
-              height: 90,
-            ),
-          ],
-        ),
-      ),
+          ),
     );
   }
 }
