@@ -16,49 +16,63 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: AppBar(title: Icon(Icons.menu)),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              ElevatedButton(
-                onPressed: () {
-                  print('Signed-Up');
-                },
-                child: Text('SIGN UP'),
-                style: ElevatedButton.styleFrom(
-                  elevation: 40,
-                  shadowColor: Colors.red,
-                ),
-                onLongPress: () {
-                  print('Long Press');
-                },
-              ),
-              TextButton(
-                onPressed: () {
-                  print('سبحان الله');
-                },
-                child: Text('Click Here'),
-              ),
-              ElevatedButton.icon(
-                onPressed: () {},
-                icon: Icon(Icons.apple),
-                label: Text('Click me'),
-              ),
-              InkWell(
-                onTap: () {
-                  print('Hi kid');
-                },
-                child: Image(
-                  image: NetworkImage(
-                    'https://i.pinimg.com/originals/99/4c/ca/994ccaef22db396d4d05d569ec35a207.png',
-                  ),
-                  height: 100,
-                  width: 100,
-                ),
-              ),
-            ],
-          ),
+        appBar: AppBar(
+          title: Icon(Icons.menu),
+        ),
+        floatingActionButton: FloatingActionButton(
+          //Static button
+
+          onPressed: () {},
+          backgroundColor: Color.fromARGB(255, 24, 0, 145),
+          child: Icon(Icons.add),
+        ),
+        body: ListView(
+          //Scrollable
+          children: [
+            Container(
+              child: Text(
+                  'Ssafdaf'), // The container does'nt appear if there is no elements inside it
+              width: double.infinity,
+              height: 300,
+              color: Colors.red,
+              margin: EdgeInsets.only(top: 10),
+            ),
+            Container(
+              child: Text('Ssafdaf'),
+              height: 300,
+              width: double.infinity,
+              color: Colors.red,
+              margin: EdgeInsets.only(top: 10),
+            ),
+            Container(
+              child: Text('Ssafdaf'),
+              height: 300,
+              width: double.infinity,
+              color: Colors.red,
+              margin: EdgeInsets.only(top: 10),
+            ),
+            Container(
+              child: Text('Ssafdaf'),
+              height: 300,
+              width: double.infinity,
+              color: Colors.red,
+              margin: EdgeInsets.only(top: 10),
+            ),
+            Container(
+              child: Text('Ssafdaf'),
+              height: 300,
+              width: double.infinity,
+              color: Colors.red,
+              margin: EdgeInsets.only(top: 10),
+            ),
+            Container(
+              child: Text('Ssafdaf'),
+              height: 300,
+              width: double.infinity,
+              color: Colors.red,
+              margin: EdgeInsets.only(top: 10),
+            ),
+          ],
         ),
       ),
     );
