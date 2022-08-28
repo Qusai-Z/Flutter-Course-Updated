@@ -16,60 +16,39 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-          appBar: AppBar(title: Icon(Icons.menu)),
-          body: SingleChildScrollView(
-            // you can only scroll when you scroll on the column..any other place on the screen are not allowed
-            scrollDirection: Axis.vertical,
-            child: Column(
-              children: [
-                Container(
-                  margin: EdgeInsets.all(10),
-                  color: Colors.blue,
-                  width: 90,
-                  height: 90,
+        appBar: AppBar(title: Icon(Icons.menu)),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  print('Signed-Up');
+                },
+                child: Text('SIGN UP'),
+                style: ElevatedButton.styleFrom(
+                  elevation: 40,
+                  shadowColor: Colors.red,
                 ),
-                Container(
-                  margin: EdgeInsets.all(10),
-                  color: Colors.blue,
-                  width: 90,
-                  height: 90,
-                ),
-                Container(
-                  margin: EdgeInsets.all(10),
-                  color: Colors.blue,
-                  width: 90,
-                  height: 90,
-                ),
-                Container(
-                  margin: EdgeInsets.all(10),
-                  color: Colors.blue,
-                  width: 90,
-                  height: 90,
-                ),
-                Container(
-                  margin: EdgeInsets.all(10),
-                  color: Colors.blue,
-                  width: 90,
-                  height: 90,
-                ),
-                Container(
-                  margin: EdgeInsets.all(10),
-                  color: Colors.blue,
-                  width: 90,
-                  height: 90,
-                ),
-                Container(
-                  margin: EdgeInsets.all(10),
-                  color: Colors.blue,
-                  width: 90,
-                  height: 90,
-                ),
-              ],
-            ),
-          )
-          // master widget
-
+                onLongPress: () {
+                  print('Long Press');
+                },
+              ),
+              TextButton(
+                onPressed: () {
+                  print('سبحان الله');
+                },
+                child: Text('Click Here'),
+              ),
+              ElevatedButton.icon(
+                onPressed: () {},
+                icon: Icon(Icons.apple),
+                label: Text('Click me'),
+              ),
+            ],
           ),
+        ),
+      ),
     );
   }
 }
