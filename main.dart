@@ -45,6 +45,18 @@ class MyApp extends StatelessWidget {
                 icon: Icon(Icons.apple),
                 label: Text('Click me'),
               ),
+              InkWell(
+                onTap: () {
+                  print('Hi kid');
+                },
+                child: Image(
+                  image: NetworkImage(
+                    'https://i.pinimg.com/originals/99/4c/ca/994ccaef22db396d4d05d569ec35a207.png',
+                  ),
+                  height: 100,
+                  width: 100,
+                ),
+              ),
             ],
           ),
         ),
