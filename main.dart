@@ -28,23 +28,22 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Container(
           color: Color.fromARGB(255, 210, 210, 210),
-          height: 50,
-          width: double.infinity,
           margin: EdgeInsets.all(15),
           padding: EdgeInsets.all(10),
           child: DropdownButton(
-            underline: Divider(
-              thickness: 0,
-            ),
+            isExpanded:
+                true, //this line solve the issue of conjection of two width.double.infinity()
+
             icon: Icon(Icons.arrow_downward),
             iconEnabledColor: Colors.white,
             iconSize: 30,
             hint: Container(
-              padding: EdgeInsets.all(95),
+              width: double.infinity,
+              padding: EdgeInsets.only(right: 10),
               child: Text(
                 'Choose Country',
                 textDirection: TextDirection.rtl,
-                style: TextStyle(color: Colors.red),
+                textAlign: TextAlign.right,
               ),
             ),
             items: ["KSA", "UAE", "EG", "SU"]
