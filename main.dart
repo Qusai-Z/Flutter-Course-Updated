@@ -14,6 +14,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   var Text1 = 'Horse';
+  var DropList;
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -25,64 +26,25 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: Icon(Icons.menu),
         ),
-        floatingActionButton: FloatingActionButton(
-          //Static button
-
-          onPressed: () {
-            setState(() {
-              Text1 = 'Text Changed';
-            });
-          },
-          backgroundColor: Color.fromARGB(255, 24, 0, 145),
-          child: Icon(Icons.add),
-        ),
-        body: ListView(
-          //Scrollable
-          children: [
-            Container(
-              child: Text(
-                  '${Text1}'), // The container does'nt appear if there is no elements inside it
-              width: double.infinity,
-              height: 300,
-              color: Colors.red,
-              margin: EdgeInsets.only(top: 10),
-            ),
-            Container(
-              child: Text('${Text1}'),
-              height: 300,
-              width: double.infinity,
-              color: Colors.red,
-              margin: EdgeInsets.only(top: 10),
-            ),
-            Container(
-              child: Text('${Text1}'),
-              height: 300,
-              width: double.infinity,
-              color: Colors.red,
-              margin: EdgeInsets.only(top: 10),
-            ),
-            Container(
-              child: Text('${Text1}'),
-              height: 300,
-              width: double.infinity,
-              color: Colors.red,
-              margin: EdgeInsets.only(top: 10),
-            ),
-            Container(
-              child: Text('${Text1}'),
-              height: 300,
-              width: double.infinity,
-              color: Colors.red,
-              margin: EdgeInsets.only(top: 10),
-            ),
-            Container(
-              child: Text('${Text1}'),
-              height: 300,
-              width: double.infinity,
-              color: Colors.red,
-              margin: EdgeInsets.only(top: 10),
-            ),
-          ],
+        body: Center(
+          child: DropdownButton(
+            hint: Text('Choose Country'),
+            items: ["KSA", "UAE", "EG", "SU"]
+                .map(
+                  (e) => DropdownMenuItem(
+                      child: Text("${e}"),
+                      value:
+                          e), //to change the type from string to DropDownMenu
+                )
+                .toList(),
+            onChanged: (val) {
+              //"KSA", "UAE", "EG", "SU"
+              setState(() {
+                DropList = val;
+              });
+            },
+            value: DropList,
+          ),
         ),
       ),
     );
