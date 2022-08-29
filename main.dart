@@ -26,9 +26,27 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: Icon(Icons.menu),
         ),
-        body: Center(
+        body: Container(
+          color: Color.fromARGB(255, 210, 210, 210),
+          height: 50,
+          width: double.infinity,
+          margin: EdgeInsets.all(15),
+          padding: EdgeInsets.all(10),
           child: DropdownButton(
-            hint: Text('Choose Country'),
+            underline: Divider(
+              thickness: 0,
+            ),
+            icon: Icon(Icons.arrow_downward),
+            iconEnabledColor: Colors.white,
+            iconSize: 30,
+            hint: Container(
+              padding: EdgeInsets.all(95),
+              child: Text(
+                'Choose Country',
+                textDirection: TextDirection.rtl,
+                style: TextStyle(color: Colors.red),
+              ),
+            ),
             items: ["KSA", "UAE", "EG", "SU"]
                 .map(
                   (e) => DropdownMenuItem(
