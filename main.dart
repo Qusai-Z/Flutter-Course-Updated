@@ -5,9 +5,15 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  var Text1 = 'Horse';
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -22,7 +28,11 @@ class MyApp extends StatelessWidget {
         floatingActionButton: FloatingActionButton(
           //Static button
 
-          onPressed: () {},
+          onPressed: () {
+            setState(() {
+              Text1 = 'Text Changed';
+            });
+          },
           backgroundColor: Color.fromARGB(255, 24, 0, 145),
           child: Icon(Icons.add),
         ),
@@ -31,42 +41,42 @@ class MyApp extends StatelessWidget {
           children: [
             Container(
               child: Text(
-                  'Ssafdaf'), // The container does'nt appear if there is no elements inside it
+                  '${Text1}'), // The container does'nt appear if there is no elements inside it
               width: double.infinity,
               height: 300,
               color: Colors.red,
               margin: EdgeInsets.only(top: 10),
             ),
             Container(
-              child: Text('Ssafdaf'),
+              child: Text('${Text1}'),
               height: 300,
               width: double.infinity,
               color: Colors.red,
               margin: EdgeInsets.only(top: 10),
             ),
             Container(
-              child: Text('Ssafdaf'),
+              child: Text('${Text1}'),
               height: 300,
               width: double.infinity,
               color: Colors.red,
               margin: EdgeInsets.only(top: 10),
             ),
             Container(
-              child: Text('Ssafdaf'),
+              child: Text('${Text1}'),
               height: 300,
               width: double.infinity,
               color: Colors.red,
               margin: EdgeInsets.only(top: 10),
             ),
             Container(
-              child: Text('Ssafdaf'),
+              child: Text('${Text1}'),
               height: 300,
               width: double.infinity,
               color: Colors.red,
               margin: EdgeInsets.only(top: 10),
             ),
             Container(
-              child: Text('Ssafdaf'),
+              child: Text('${Text1}'),
               height: 300,
               width: double.infinity,
               color: Colors.red,
