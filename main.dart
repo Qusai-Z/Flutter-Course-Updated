@@ -38,93 +38,47 @@ class _MyAppState extends State<MyApp> {
               SizedBox(
                 height: 15,
               ),
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Text('KSA'),
-                  ),
-                  Radio(
-                      value: "ksa",
-                      groupValue: Country,
-                      onChanged: (val) {
-                        setState(() {
-                          Country = val as String?;
-                        });
-                      }),
-                  Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Text('UAE'),
-                  ),
-                  Radio(
-                      value: "uae",
-                      groupValue: Country,
-                      onChanged: (val) {
-                        setState(() {
-                          Country = val as String?;
-                        });
-                      }),
-                  Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Text('EG'),
-                  ),
-                  Radio(
-                      value: "egypt",
-                      groupValue: Country,
-                      onChanged: (val) {
-                        setState(() {
-                          Country = val as String?;
-                        });
-                      }),
-                ],
+              RadioListTile(
+                title: Text('KSA'),
+                subtitle: Text('Asia'),
+                secondary: Icon(Icons.flag),
+                activeColor: Colors.red,
+                selected: Country == "ksa" ? true : false,
+                value: "ksa",
+                groupValue: Country,
+                onChanged: ((value) {
+                  setState(() {
+                    Country = value as String?;
+                  });
+                }),
               ),
-              Text(
-                'CHOOSE CITY',
-                style: TextStyle(fontSize: 30),
-                textAlign: TextAlign.center,
+              RadioListTile(
+                title: Text('UAE'),
+                subtitle: Text('Asia'),
+                secondary: Icon(Icons.flag),
+                value: "uae",
+                activeColor: Colors.red,
+                selected: Country == "uae" ? true : false,
+                groupValue: Country,
+                onChanged: ((value) {
+                  setState(() {
+                    Country = value as String?;
+                  });
+                }),
               ),
-              SizedBox(
-                height: 15,
-              ),
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Text('Mecca'),
-                  ),
-                  Radio(
-                      value: "ksa",
-                      groupValue: City,
-                      onChanged: (val) {
-                        setState(() {
-                          City = val as String?;
-                        });
-                      }),
-                  Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Text('Dubai'),
-                  ),
-                  Radio(
-                      value: "uae",
-                      groupValue: City,
-                      onChanged: (val) {
-                        setState(() {
-                          City = val as String?;
-                        });
-                      }),
-                  Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Text('Cairo'),
-                  ),
-                  Radio(
-                      value: "egypt", // it's like identifier for a radio button
-                      groupValue: City,
-                      onChanged: (val) {
-                        setState(() {
-                          City = val as String?; //null safety
-                        });
-                      }),
-                ],
+              RadioListTile(
+                title: Text('EG'),
+                subtitle: Text('Africa'),
+                secondary: Icon(Icons.flag),
+                activeColor: Colors.red,
+                selected: Country == "egypt" ? true : false,
+                value: "egypt",
+                groupValue: Country,
+                onChanged: ((value) {
+                  setState(() {
+                    Country = value as String?;
+                  });
+                }),
               ),
             ],
           ),
