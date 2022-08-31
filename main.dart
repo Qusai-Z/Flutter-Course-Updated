@@ -15,8 +15,11 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  bool _CheckBox = false;
-  // This widget is the root of your application.
+  bool KSA = false;
+  bool UAE = false;
+  bool USA = false;
+  bool JAPAN = false;
+
   @override
   Widget build(BuildContext context) {
     // build : is a widget for design
@@ -28,20 +31,77 @@ class _MyAppState extends State<MyApp> {
           title: Icon(Icons.menu),
         ),
         body: Center(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+          child: Column(
             children: [
-              Text('Accept the terms'),
-              Checkbox(
-                  activeColor: Colors.green,
-                  value: _CheckBox,
+              Text(
+                'CHOOSE COUNTRY',
+                style: TextStyle(fontSize: 50),
+                textAlign: TextAlign.center,
+              ),
+              CheckboxListTile(
+                  contentPadding: EdgeInsets.all(20),
+                  title: Text('KSA'),
+                  subtitle: Text('ASIA'), // appear under the title
+                  secondary: Icon(Icons.flag), //apear at the left of the title
+                  isThreeLine:
+                      true, // boolean method that organize the checkboxlisttitle row
+                  activeColor: Color.fromARGB(255, 0, 184, 25),
+                  selected: KSA, //run the app and you will know
+                  value: KSA,
                   onChanged: (value) {
                     setState(() {
-                      _CheckBox =
+                      KSA =
                           value!; //This line is very importan.  the value argument should be in the right side
-                      print(_CheckBox);
                     });
-                  })
+                  }),
+              CheckboxListTile(
+                  contentPadding: EdgeInsets.all(20),
+                  title: Text('UAE'),
+                  subtitle: Text('ASIA'), // appear under the title
+                  secondary: Icon(Icons.flag), //apear at the left of the title
+                  isThreeLine:
+                      true, // boolean method that organize the checkboxlisttitle row
+                  activeColor: Color.fromARGB(255, 0, 0, 0),
+                  selected: UAE,
+                  value: UAE,
+                  onChanged: (value) {
+                    setState(() {
+                      UAE =
+                          value!; //This line is very importan.  the value argument should be in the right side
+                    });
+                  }),
+              CheckboxListTile(
+                  contentPadding: EdgeInsets.all(20),
+                  title: Text('USA'),
+                  subtitle: Text('EUROPE'), // appear under the title
+                  secondary: Icon(Icons.flag), //apear at the left of the title
+                  isThreeLine:
+                      true, // boolean method that organize the checkboxlisttitle row
+                  activeColor: Color.fromARGB(255, 184, 0, 0),
+                  selected: USA,
+                  value: USA,
+                  onChanged: (value) {
+                    setState(() {
+                      USA =
+                          value!; //This line is very importan.  the value argument should be in the right side
+                    });
+                  }),
+              CheckboxListTile(
+                  contentPadding: EdgeInsets.all(20),
+                  title: Text('JAPAN'),
+                  subtitle: Text('ASIA'), // appear under the title
+                  secondary: Icon(Icons.flag), //apear at the left of the title
+                  isThreeLine:
+                      true, // boolean method that organize the checkboxlisttitle row
+                  activeColor: Color.fromARGB(255, 255, 255, 255),
+                  selected: JAPAN, // -_-
+                  value: JAPAN,
+                  onChanged: (value) {
+                    setState(() {
+                      JAPAN =
+                          value!; //This line is very importan.  the value argument should be in the right side
+                    });
+                  }),
             ],
           ),
         ),
