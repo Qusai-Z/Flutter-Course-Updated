@@ -15,11 +15,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  bool KSA = false;
-  bool UAE = false;
-  bool USA = false;
-  bool JAPAN = false;
-
+  String? Country;
+  String? City;
   @override
   Widget build(BuildContext context) {
     // build : is a widget for design
@@ -35,73 +32,100 @@ class _MyAppState extends State<MyApp> {
             children: [
               Text(
                 'CHOOSE COUNTRY',
-                style: TextStyle(fontSize: 50),
+                style: TextStyle(fontSize: 30),
                 textAlign: TextAlign.center,
               ),
-              CheckboxListTile(
-                  contentPadding: EdgeInsets.all(20),
-                  title: Text('KSA'),
-                  subtitle: Text('ASIA'), // appear under the title
-                  secondary: Icon(Icons.flag), //apear at the left of the title
-                  isThreeLine:
-                      true, // boolean method that organize the checkboxlisttitle row
-                  activeColor: Color.fromARGB(255, 0, 184, 25),
-                  selected: KSA, //run the app and you will know
-                  value: KSA,
-                  onChanged: (value) {
-                    setState(() {
-                      KSA =
-                          value!; //This line is very importan.  the value argument should be in the right side
-                    });
-                  }),
-              CheckboxListTile(
-                  contentPadding: EdgeInsets.all(20),
-                  title: Text('UAE'),
-                  subtitle: Text('ASIA'), // appear under the title
-                  secondary: Icon(Icons.flag), //apear at the left of the title
-                  isThreeLine:
-                      true, // boolean method that organize the checkboxlisttitle row
-                  activeColor: Color.fromARGB(255, 0, 0, 0),
-                  selected: UAE,
-                  value: UAE,
-                  onChanged: (value) {
-                    setState(() {
-                      UAE =
-                          value!; //This line is very importan.  the value argument should be in the right side
-                    });
-                  }),
-              CheckboxListTile(
-                  contentPadding: EdgeInsets.all(20),
-                  title: Text('USA'),
-                  subtitle: Text('EUROPE'), // appear under the title
-                  secondary: Icon(Icons.flag), //apear at the left of the title
-                  isThreeLine:
-                      true, // boolean method that organize the checkboxlisttitle row
-                  activeColor: Color.fromARGB(255, 184, 0, 0),
-                  selected: USA,
-                  value: USA,
-                  onChanged: (value) {
-                    setState(() {
-                      USA =
-                          value!; //This line is very importan.  the value argument should be in the right side
-                    });
-                  }),
-              CheckboxListTile(
-                  contentPadding: EdgeInsets.all(20),
-                  title: Text('JAPAN'),
-                  subtitle: Text('ASIA'), // appear under the title
-                  secondary: Icon(Icons.flag), //apear at the left of the title
-                  isThreeLine:
-                      true, // boolean method that organize the checkboxlisttitle row
-                  activeColor: Color.fromARGB(255, 255, 255, 255),
-                  selected: JAPAN, // -_-
-                  value: JAPAN,
-                  onChanged: (value) {
-                    setState(() {
-                      JAPAN =
-                          value!; //This line is very importan.  the value argument should be in the right side
-                    });
-                  }),
+              SizedBox(
+                height: 15,
+              ),
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Text('KSA'),
+                  ),
+                  Radio(
+                      value: "ksa",
+                      groupValue: Country,
+                      onChanged: (val) {
+                        setState(() {
+                          Country = val as String?;
+                        });
+                      }),
+                  Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Text('UAE'),
+                  ),
+                  Radio(
+                      value: "uae",
+                      groupValue: Country,
+                      onChanged: (val) {
+                        setState(() {
+                          Country = val as String?;
+                        });
+                      }),
+                  Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Text('EG'),
+                  ),
+                  Radio(
+                      value: "egypt",
+                      groupValue: Country,
+                      onChanged: (val) {
+                        setState(() {
+                          Country = val as String?;
+                        });
+                      }),
+                ],
+              ),
+              Text(
+                'CHOOSE CITY',
+                style: TextStyle(fontSize: 30),
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Text('Mecca'),
+                  ),
+                  Radio(
+                      value: "ksa",
+                      groupValue: City,
+                      onChanged: (val) {
+                        setState(() {
+                          City = val as String?;
+                        });
+                      }),
+                  Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Text('Dubai'),
+                  ),
+                  Radio(
+                      value: "uae",
+                      groupValue: City,
+                      onChanged: (val) {
+                        setState(() {
+                          City = val as String?;
+                        });
+                      }),
+                  Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Text('Cairo'),
+                  ),
+                  Radio(
+                      value: "egypt", // it's like identifier for a radio button
+                      groupValue: City,
+                      onChanged: (val) {
+                        setState(() {
+                          City = val as String?; //null safety
+                        });
+                      }),
+                ],
+              ),
             ],
           ),
         ),
