@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:practice/sqlfile.dart';
+import 'package:sqflite/sqflite.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,6 +15,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  SqlDb _db = new SqlDb();
   var Text1 = 'Horse';
   var DropList;
   // This widget is the root of your application.
@@ -26,41 +29,58 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: Icon(Icons.menu),
         ),
-        body: Container(
-          color: Color.fromARGB(255, 210, 210, 210),
-          margin: EdgeInsets.all(15),
-          padding: EdgeInsets.all(10),
-          child: DropdownButton(
-            isExpanded:
-                true, //this line solve the issue of conjection of two width.double.infinity()
-
-            icon: Icon(Icons.arrow_downward),
-            iconEnabledColor: Colors.white,
-            iconSize: 30,
-            hint: Container(
-              width: double.infinity,
-              padding: EdgeInsets.only(right: 10),
-              child: Text(
-                'Choose Country',
-                textDirection: TextDirection.rtl,
-                textAlign: TextAlign.right,
+        body: Center(
+          child: Column(
+            children: [
+              MaterialButton(
+                onPressed: () async {
+                  int response = await _db.insertData(
+                      "INSERT INTO 'notes' ('note') VALUES ('NOTE ONE')");
+                  print(response);
+                },
+                child: Text(
+                  'INSERT DATA',
+                  style: TextStyle(color: Colors.white, fontSize: 30),
+                ),
+                color: Colors.red,
               ),
-            ),
-            items: ["KSA", "UAE", "EG", "SU"]
-                .map(
-                  (e) => DropdownMenuItem(
-                      child: Text("${e}"),
-                      value:
-                          e), //to change the type from string to DropDownMenu
-                )
-                .toList(),
-            onChanged: (val) {
-              //"KSA", "UAE", "EG", "SU"
-              setState(() {
-                DropList = val;
-              });
-            },
-            value: DropList,
+              MaterialButton(
+                onPressed: () async {
+                  int response = await _db.updateData(
+                      "UPDATE 'notes' SET 'note' = ' Note SDASD 'WHERE id = 6");
+                  print("${response}");
+                },
+                child: Text(
+                  'UPDATE DATA',
+                  style: TextStyle(color: Colors.white, fontSize: 30),
+                ),
+                color: Colors.red,
+              ),
+              MaterialButton(
+                onPressed: () async {
+                  int response =
+                      await _db.deleteData("DELETE FROM 'notes' WHERE id = 4 ");
+                  print("${response}");
+                },
+                child: Text(
+                  'DELETE DATA',
+                  style: TextStyle(color: Colors.white, fontSize: 30),
+                ),
+                color: Colors.red,
+              ),
+              MaterialButton(
+                onPressed: () async {
+                  List<Map> response =
+                      await _db.readData("SELECT * FROM 'notes' ");
+                  print("${response}");
+                },
+                child: Text(
+                  'READ DATA',
+                  style: TextStyle(color: Colors.white, fontSize: 30),
+                ),
+                color: Colors.red,
+              ),
+            ],
           ),
         ),
       ),
