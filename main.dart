@@ -15,9 +15,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  SqlDb _db = new SqlDb();
-  var Text1 = 'Horse';
-  var DropList;
+  bool _CheckBox = false;
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -30,56 +28,20 @@ class _MyAppState extends State<MyApp> {
           title: Icon(Icons.menu),
         ),
         body: Center(
-          child: Column(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              MaterialButton(
-                onPressed: () async {
-                  int response = await _db.insertData(
-                      "INSERT INTO 'notes' ('note') VALUES ('NOTE ONE')");
-                  print(response);
-                },
-                child: Text(
-                  'INSERT DATA',
-                  style: TextStyle(color: Colors.white, fontSize: 30),
-                ),
-                color: Colors.red,
-              ),
-              MaterialButton(
-                onPressed: () async {
-                  int response = await _db.updateData(
-                      "UPDATE 'notes' SET 'note' = ' Note SDASD 'WHERE id = 6");
-                  print("${response}");
-                },
-                child: Text(
-                  'UPDATE DATA',
-                  style: TextStyle(color: Colors.white, fontSize: 30),
-                ),
-                color: Colors.red,
-              ),
-              MaterialButton(
-                onPressed: () async {
-                  int response =
-                      await _db.deleteData("DELETE FROM 'notes' WHERE id = 4 ");
-                  print("${response}");
-                },
-                child: Text(
-                  'DELETE DATA',
-                  style: TextStyle(color: Colors.white, fontSize: 30),
-                ),
-                color: Colors.red,
-              ),
-              MaterialButton(
-                onPressed: () async {
-                  List<Map> response =
-                      await _db.readData("SELECT * FROM 'notes' ");
-                  print("${response}");
-                },
-                child: Text(
-                  'READ DATA',
-                  style: TextStyle(color: Colors.white, fontSize: 30),
-                ),
-                color: Colors.red,
-              ),
+              Text('Accept the terms'),
+              Checkbox(
+                  activeColor: Colors.green,
+                  value: _CheckBox,
+                  onChanged: (value) {
+                    setState(() {
+                      _CheckBox =
+                          value!; //This line is very importan.  the value argument should be in the right side
+                      print(_CheckBox);
+                    });
+                  })
             ],
           ),
         ),
