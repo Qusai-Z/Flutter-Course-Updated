@@ -47,9 +47,10 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
           body: GridView.builder(
+        scrollDirection: Axis.horizontal,
         itemCount: mobile.length,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, crossAxisSpacing: 5),
+            crossAxisCount: 5, crossAxisSpacing: 5),
         itemBuilder: (context, index) {
           return Container(
             color: Colors.orange,
