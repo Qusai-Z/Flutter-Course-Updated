@@ -45,7 +45,13 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: ListView.builder(
+        body: ListView.separated(
+          separatorBuilder: (context, index) {
+            return Divider(
+              color: Colors.grey,
+              height: 3,
+            );
+          },
           itemCount: mobile.length,
           itemBuilder: (context, i) {
             return ListTile(
