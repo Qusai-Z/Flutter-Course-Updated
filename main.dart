@@ -16,6 +16,28 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  List mobile = [
+    {"name": "s21 ultra", "year": "2021", "price": "4400 SR"},
+    {"name": "iphone 13", "year": "2021", "price": "5400 SR"},
+    {"name": "s22 ultra", "year": "2022", "price": "4900 SR"},
+    {"name": "Huwaui ", "year": "2021", "price": "4400 SR"},
+    {"name": "pro ultra", "year": "2021", "price": "44700 SR"},
+    {"name": "gg ultra", "year": "2021", "price": "440660 SR"},
+    {"name": "fs ultra", "year": "2021", "price": "440980 SR"},
+    {"name": "sdsfxx ultra", "year": "2021", "price": "440890 SR"},
+    {"name": "sdfd ultra", "year": "2021", "price": "44900 SR"},
+    {"name": "sddd ultra", "year": "2021", "price": "449900 SR"},
+    {"name": "sd sadultra", "year": "2021", "price": "4478900 SR"},
+    {"name": "sss ultra", "year": "2021", "price": "440780 SR"},
+    {"name": "pro ultra", "year": "2021", "price": "44700 SR"},
+    {"name": "gg ultra", "year": "2021", "price": "440660 SR"},
+    {"name": "fs ultra", "year": "2021", "price": "440980 SR"},
+    {"name": "sdsfxx ultra", "year": "2021", "price": "440890 SR"},
+    {"name": "sdfd ultra", "year": "2021", "price": "44900 SR"},
+    {"name": "sddd ultra", "year": "2021", "price": "449900 SR"},
+    {"name": "sd sadultra", "year": "2021", "price": "4478900 SR"},
+    {"name": "sss ultra", "year": "2021", "price": "440780 SR"},
+  ];
   @override
   Widget build(BuildContext context) {
     // build : is a widget for design
@@ -23,55 +45,15 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: AppBar(
-          title: Icon(Icons.menu),
-        ),
-        body: ListView(
-          //best scrollable widget
-          children: [
-            Container(
-              child: Text('A'),
-              color: Colors.red,
-              height: 200,
-              width: double.infinity,
-              margin: EdgeInsets.all(20),
-            ),
-            Container(
-              child: Text('A'),
-              color: Color.fromARGB(255, 54, 244, 76),
-              height: 200,
-              width: double.infinity,
-              margin: EdgeInsets.all(20),
-            ),
-            Container(
-              child: Text('A'),
-              color: Color.fromARGB(255, 110, 110, 110),
-              height: 200,
-              width: double.infinity,
-              margin: EdgeInsets.all(20),
-            ),
-            Container(
-              child: Text('A'),
-              color: Colors.red,
-              height: 200,
-              width: double.infinity,
-              margin: EdgeInsets.all(20),
-            ),
-            Container(
-              child: Text('A'),
-              color: Color.fromARGB(255, 0, 0, 0),
-              height: 200,
-              width: double.infinity,
-              margin: EdgeInsets.all(20),
-            ),
-            Container(
-              child: Text('A'),
-              color: Color.fromARGB(255, 95, 54, 244),
-              height: 200,
-              width: double.infinity,
-              margin: EdgeInsets.all(20),
-            ),
-          ],
+        body: ListView.builder(
+          itemCount: mobile.length,
+          itemBuilder: (context, i) {
+            return ListTile(
+              title: Text('${mobile[i]['name']}'),
+              subtitle: Text('${mobile[i]['price']}'),
+              trailing: Text('${mobile[i]['year']}'),
+            );
+          },
         ),
       ),
     );
