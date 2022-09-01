@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:path/path.dart';
@@ -45,23 +46,21 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: ListView.separated(
-          separatorBuilder: (context, index) {
-            return Divider(
-              color: Colors.grey,
-              height: 3,
-            );
-          },
-          itemCount: mobile.length,
-          itemBuilder: (context, i) {
-            return ListTile(
-              title: Text('${mobile[i]['name']}'),
-              subtitle: Text('${mobile[i]['price']}'),
-              trailing: Text('${mobile[i]['year']}'),
-            );
-          },
-        ),
-      ),
+          body: GridView.builder(
+        itemCount: mobile.length,
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2, crossAxisSpacing: 5),
+        itemBuilder: (context, index) {
+          return Container(
+            color: Colors.orange,
+            margin: EdgeInsets.all(5),
+            child: ListTile(
+              title: Text("${mobile[index]["name"]}"),
+              subtitle: Text("${mobile[index]["price"]}"),
+            ),
+          );
+        },
+      )),
     );
   }
 }
