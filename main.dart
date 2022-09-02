@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -24,25 +26,59 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: DefaultTabController(
-        //Depend on TabBarView
-        length: 3, // only consider the child of the widget not the sub childs!
+        length: 4,
         child: Scaffold(
-          appBar: AppBar(),
+          appBar: AppBar(
+            title: Text(
+              'Welcome',
+            ),
+            centerTitle: true,
+            bottom: TabBar(
+              isScrollable: true,
+              indicatorColor: Colors.orange,
+              indicatorWeight: 6,
+              tabs: [
+                Tab(
+                  child: Column(
+                    children: [
+                      Icon(Icons.home),
+                      Text('Screen 1'),
+                    ],
+                  ), //1
+                ),
+                Tab(
+                  child: Column(
+                    children: [
+                      Icon(Icons.architecture),
+                      Text('Screen 2'),
+                    ],
+                  ), //1 //2
+                ),
+                Tab(
+                  child: Column(
+                    children: [
+                      Icon(Icons.architecture),
+                      Text('Screen 2'),
+                    ],
+                  ), //1 //2
+                ),
+                Tab(
+                  child: Column(
+                    children: [
+                      Icon(Icons.architecture),
+                      Text('Screen 2'),
+                    ],
+                  ), //1 //2
+                ),
+              ],
+            ),
+          ),
           body: TabBarView(
-            //Depend on DefaultTabController
             children: [
-              Container(
-                color: Colors.grey,
-                child: Text('QUSAI'),
-              ),
-              Container(
-                color: Color.fromARGB(255, 89, 89, 89),
-                child: Text('ZUHAIR'),
-              ),
-              Container(
-                color: Color.fromARGB(255, 31, 31, 31),
-                child: Text('RAWA'),
-              )
+              Container(color: Colors.green), //1
+              Container(color: Colors.red), //2
+              Container(color: Colors.blue), //3
+              Container(color: Colors.yellow), //4
             ],
           ),
         ),
