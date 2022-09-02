@@ -19,69 +19,35 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  List<Widget> Pages = [
+    Container(
+      width: double.infinity,
+      height: 300,
+      color: Colors.orange,
+    ),
+    Container(
+      width: double.infinity,
+      height: 300,
+      color: Colors.blue,
+    ),
+    Container(
+      width: double.infinity,
+      height: 300,
+      color: Colors.red,
+    ),
+  ];
   @override
   Widget build(BuildContext context) {
     // build : is a widget for design
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: DefaultTabController(
-        length: 4,
-        child: Scaffold(
-          appBar: AppBar(
-            title: Text(
-              'Welcome',
-            ),
-            centerTitle: true,
-            bottom: TabBar(
-              isScrollable: true,
-              indicatorColor: Colors.orange,
-              indicatorWeight: 6,
-              tabs: [
-                Tab(
-                  child: Column(
-                    children: [
-                      Icon(Icons.home),
-                      Text('Screen 1'),
-                    ],
-                  ), //1
-                ),
-                Tab(
-                  child: Column(
-                    children: [
-                      Icon(Icons.architecture),
-                      Text('Screen 2'),
-                    ],
-                  ), //1 //2
-                ),
-                Tab(
-                  child: Column(
-                    children: [
-                      Icon(Icons.architecture),
-                      Text('Screen 2'),
-                    ],
-                  ), //1 //2
-                ),
-                Tab(
-                  child: Column(
-                    children: [
-                      Icon(Icons.architecture),
-                      Text('Screen 2'),
-                    ],
-                  ), //1 //2
-                ),
-              ],
-            ),
-          ),
-          body: TabBarView(
-            children: [
-              Container(color: Colors.green), //1
-              Container(color: Colors.red), //2
-              Container(color: Colors.blue), //3
-              Container(color: Colors.yellow), //4
-            ],
-          ),
-        ),
+      home: PageView(
+        reverse: true,
+        children: [
+          Pages.first,
+          Pages.last,
+        ],
       ),
     ); // like stories
   }
