@@ -17,28 +17,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  List mobile = [
-    {"name": "s21 ultra", "year": "2021", "price": "4400 SR"},
-    {"name": "iphone 13", "year": "2021", "price": "5400 SR"},
-    {"name": "s22 ultra", "year": "2022", "price": "4900 SR"},
-    {"name": "Huwaui ", "year": "2021", "price": "4400 SR"},
-    {"name": "pro ultra", "year": "2021", "price": "44700 SR"},
-    {"name": "gg ultra", "year": "2021", "price": "440660 SR"},
-    {"name": "fs ultra", "year": "2021", "price": "440980 SR"},
-    {"name": "sdsfxx ultra", "year": "2021", "price": "440890 SR"},
-    {"name": "sdfd ultra", "year": "2021", "price": "44900 SR"},
-    {"name": "sddd ultra", "year": "2021", "price": "449900 SR"},
-    {"name": "sd sadultra", "year": "2021", "price": "4478900 SR"},
-    {"name": "sss ultra", "year": "2021", "price": "440780 SR"},
-    {"name": "pro ultra", "year": "2021", "price": "44700 SR"},
-    {"name": "gg ultra", "year": "2021", "price": "440660 SR"},
-    {"name": "fs ultra", "year": "2021", "price": "440980 SR"},
-    {"name": "sdsfxx ultra", "year": "2021", "price": "440890 SR"},
-    {"name": "sdfd ultra", "year": "2021", "price": "44900 SR"},
-    {"name": "sddd ultra", "year": "2021", "price": "449900 SR"},
-    {"name": "sd sadultra", "year": "2021", "price": "4478900 SR"},
-    {"name": "sss ultra", "year": "2021", "price": "440780 SR"},
-  ];
+  GlobalKey<ScaffoldState> Scaf = new GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     // build : is a widget for design
@@ -46,8 +25,17 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: AppBar(),
-        drawer: Drawer(
+        key: Scaf,
+        appBar: AppBar(
+          title: IconButton(
+            icon: Icon(Icons.dangerous),
+            onPressed: () {
+              Scaf.currentState?.openEndDrawer();
+            },
+          ),
+        ),
+        drawerScrimColor: Colors.grey.withOpacity(0.9),
+        endDrawer: Drawer(
           elevation: 500,
           child: Column(
             children: [
@@ -61,6 +49,14 @@ class _MyAppState extends State<MyApp> {
                 title: Text('Home Page'),
               ),
             ],
+          ),
+        ),
+        body: Center(
+          child: ElevatedButton(
+            child: Text('OPEN DRAWER'),
+            onPressed: () {
+              Scaf.currentState?.openEndDrawer();
+            },
           ),
         ),
       ),
