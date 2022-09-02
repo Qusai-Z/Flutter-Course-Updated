@@ -46,22 +46,24 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-          body: GridView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: mobile.length,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 5, crossAxisSpacing: 5),
-        itemBuilder: (context, index) {
-          return Container(
-            color: Colors.orange,
-            margin: EdgeInsets.all(5),
-            child: ListTile(
-              title: Text("${mobile[index]["name"]}"),
-              subtitle: Text("${mobile[index]["price"]}"),
-            ),
-          );
-        },
-      )),
+        appBar: AppBar(),
+        drawer: Drawer(
+          elevation: 500,
+          child: Column(
+            children: [
+              UserAccountsDrawerHeader(
+                currentAccountPicture: CircleAvatar(),
+                accountName: Text('Ahmed'),
+                accountEmail: Text('sdfsdf'),
+              ),
+              ListTile(
+                leading: Icon(Icons.home),
+                title: Text('Home Page'),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
