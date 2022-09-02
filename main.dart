@@ -17,49 +17,36 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  GlobalKey<ScaffoldState> Scaf = new GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     // build : is a widget for design
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        key: Scaf,
-        appBar: AppBar(
-          title: IconButton(
-            icon: Icon(Icons.dangerous),
-            onPressed: () {
-              Scaf.currentState?.openEndDrawer();
-            },
-          ),
-        ),
-        drawerScrimColor: Colors.grey.withOpacity(0.9),
-        endDrawer: Drawer(
-          elevation: 500,
-          child: Column(
+      home: DefaultTabController(
+        //Depend on TabBarView
+        length: 3, // only consider the child of the widget not the sub childs!
+        child: Scaffold(
+          appBar: AppBar(),
+          body: TabBarView(
+            //Depend on DefaultTabController
             children: [
-              UserAccountsDrawerHeader(
-                currentAccountPicture: CircleAvatar(),
-                accountName: Text('Ahmed'),
-                accountEmail: Text('sdfsdf'),
+              Container(
+                color: Colors.grey,
+                child: Text('QUSAI'),
               ),
-              ListTile(
-                leading: Icon(Icons.home),
-                title: Text('Home Page'),
+              Container(
+                color: Color.fromARGB(255, 89, 89, 89),
+                child: Text('ZUHAIR'),
               ),
+              Container(
+                color: Color.fromARGB(255, 31, 31, 31),
+                child: Text('RAWA'),
+              )
             ],
           ),
         ),
-        body: Center(
-          child: ElevatedButton(
-            child: Text('OPEN DRAWER'),
-            onPressed: () {
-              Scaf.currentState?.openEndDrawer();
-            },
-          ),
-        ),
       ),
-    );
+    ); // like stories
   }
 }
