@@ -18,6 +18,7 @@ class MyApp extends StatefulWidget {
   State<MyApp> createState() => _MyAppState();
 }
 
+// Switching between screens
 class _MyAppState extends State<MyApp> {
   List<Widget> Pages = [
     Container(
