@@ -20,35 +20,39 @@ class MyApp extends StatefulWidget {
 
 // Switching between screens
 class _MyAppState extends State<MyApp> {
-  List<Widget> Pages = [
-    Container(
-      width: double.infinity,
-      height: 300,
-      color: Colors.orange,
-    ),
-    Container(
-      width: double.infinity,
-      height: 300,
-      color: Colors.blue,
-    ),
-    Container(
-      width: double.infinity,
-      height: 300,
-      color: Colors.red,
-    ),
-  ];
+  String TEXT = "";
   @override
   Widget build(BuildContext context) {
     // build : is a widget for design
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: PageView(
-        reverse: true,
-        children: [
-          Pages.first,
-          Pages.last,
-        ],
+      home: Scaffold(
+        appBar: AppBar(),
+        body: Center(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: TextFormField(
+                  decoration: InputDecoration(labelText: "Email"),
+                  onChanged: (value) {
+                    print("$value");
+                  },
+                  onEditingComplete: () {
+                    //after pressing done
+
+                    print("Submitted Succissfully");
+                  },
+                  onFieldSubmitted: (value) {
+                    TEXT = value;
+                  },
+                ),
+              ),
+              Text("$TEXT"),
+            ],
+          ),
+        ),
       ),
     ); // like stories
   }
