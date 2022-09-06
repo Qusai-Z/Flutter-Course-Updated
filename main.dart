@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:path/path.dart';
 import 'package:practice/sqlfile.dart';
+import 'package:practice/test.dart';
 import 'package:sqflite/sqflite.dart';
+import 'package:practice/One.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,42 +20,40 @@ class MyApp extends StatefulWidget {
   State<MyApp> createState() => _MyAppState();
 }
 
-// Switching between screens
 class _MyAppState extends State<MyApp> {
-  String TEXT = "";
+  var _Value = 20.0;
   @override
   Widget build(BuildContext context) {
-    // build : is a widget for design
-
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: AppBar(),
-        body: Center(
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: TextFormField(
-                  decoration: InputDecoration(labelText: "Email"),
-                  onChanged: (value) {
-                    print("$value");
+        appBar: AppBar(
+          title: Text("SLIDER"),
+        ),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Slider(
+              activeColor: Colors.yellow,
+              inactiveColor: Colors.orange,
+              value: _Value,
+              min: 0.0,
+              max: 100,
+              onChanged: (double value) {
+                setState(
+                  () {
+                    _Value = value;
+                    print(_Value);
                   },
-                  onEditingComplete: () {
-                    //after pressing done
-
-                    print("Submitted Succissfully");
-                  },
-                  onFieldSubmitted: (value) {
-                    TEXT = value;
-                  },
-                ),
-              ),
-              Text("$TEXT"),
-            ],
-          ),
+                );
+              },
+            ),
+            Text(
+              "${_Value}",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+          ],
         ),
       ),
-    ); // like stories
+    );
   }
 }
