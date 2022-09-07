@@ -11,7 +11,12 @@ import 'package:practice/One.dart';
 import 'package:flutter/src/widgets/scroll_controller.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MaterialApp(
+      home: const MyApp(),
+      debugShowCheckedModeBanner: false,
+    ),
+  );
 }
 
 class MyApp extends StatefulWidget {
@@ -22,82 +27,117 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final ScrollController sc = new ScrollController();
-
   @override
-  void initState() {
-    sc.addListener(
-      () {
-        print(sc.offset);
-        print('Max scroll :${sc.position.maxScrollExtent}');
-      },
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        actions: [
+          IconButton(
+              onPressed: () {
+                showSearch(
+                  context: context,
+                  delegate: _SearchDialog(),
+                );
+              },
+              icon: Icon(Icons.search))
+        ],
+        title: Text('Search'),
+      ),
     );
-    super.initState();
+  }
+}
+
+class _SearchDialog extends SearchDelegate {
+  List names = [
+    "QUSAI",
+    "ZUHAIR",
+    "NAWAF",
+    "IBRAHIM",
+    "ADEL",
+    "MAJEED",
+    "KHALID",
+    "FAISAL",
+    "AYMAN",
+    "ANAS",
+    "HOUSSAM",
+    "OTHMAN",
+    "WALID"
+  ];
+  @override
+  List<Widget>? buildActions(BuildContext context) {
+    return [
+      IconButton(
+        onPressed: () {
+          query = "";
+        }, //query empty: when ever the user press close ... return the text to empty string
+        icon: Icon(Icons.close),
+      ),
+    ]; //Brackets are for action widget
   }
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          title: Center(
-            child: Text("SLIDER"),
-          ),
-          backgroundColor: Colors.black,
+  Widget? buildLeading(BuildContext context) {
+    return IconButton(
+      onPressed: () {
+        close(context, null); // go back when press on arrow back
+      },
+      icon: Icon(Icons.arrow_back),
+    );
+  }
+
+  @override
+  Widget buildResults(BuildContext context) {
+    //This func to print on screen your choice of search dialog
+    return Center(
+      child: Container(
+        margin: EdgeInsets.all(50),
+        color: Color.fromARGB(255, 255, 128, 0),
+        child: Text(
+          "${query}",
+          style: TextStyle(color: Colors.white, fontSize: 30),
         ),
-        body: ListView(
-          controller:
-              sc, //very very very imporatant:  This line catch this changes
-          children: [
-            ElevatedButton(
-              onPressed: () {
-                sc.animateTo(
-                  sc.position.maxScrollExtent,
-                  duration: Duration(milliseconds: 600),
-                  curve: Curves.ease,
-                );
-              },
-              child: Text(
-                'Go to payment',
-                style: TextStyle(color: Colors.white, fontSize: 20),
-              ),
-            ),
-            ...List.generate(
-              // these three dotted are important to remove error
-              20,
-              (index) => Container(
-                width: double.infinity,
-                height: 200,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadiusDirectional.circular(20),
-                  color: index.isEven ? Colors.purpleAccent : Colors.black,
-                ),
-                margin: EdgeInsets.all(10),
-                child: Center(
-                  child: Text(
-                    'BOX ${index}',
-                    style: TextStyle(fontSize: 20, color: Colors.white),
+      ),
+    );
+  }
+
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    List filterNames = names
+        .where(
+          (element) => element
+              .startsWith(query), //You may use contain instead of startwith
+        )
+        .toList();
+    return Container(
+      padding: EdgeInsets.all(10),
+      child: ListView.builder(
+        itemCount: query == ""
+            ? names.length
+            : filterNames.length, //query where the text search dialog is stored
+        itemBuilder: (context, index) => Container(
+          alignment: Alignment.center,
+          margin: EdgeInsets.only(bottom: 30),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20), color: Colors.orange),
+          child: InkWell(
+            onTap: () {
+              query = query == ""
+                  ? names[index]
+                  : filterNames[
+                      index]; //To select to any chooice if you don't wrote on search dialog
+              showResults(context);
+            },
+            child: query == ""
+                ? Text(
+                    '${names[index]}',
+                    style: TextStyle(fontSize: 30, color: Colors.white),
+                  )
+                : Text(
+                    '${filterNames[index]}',
+                    style: TextStyle(fontSize: 30, color: Colors.white),
                   ),
-                ),
-              ),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                sc.animateTo(
-                  sc.position.minScrollExtent,
-                  duration: Duration(milliseconds: 600),
-                  curve: Curves.ease,
-                );
-              },
-              child: Text(
-                'Go back',
-                style: TextStyle(color: Colors.white, fontSize: 20),
-              ),
-            ),
-          ],
+          ),
         ),
-        backgroundColor: Color.fromARGB(255, 94, 94, 94),
       ),
     );
   }
