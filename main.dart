@@ -11,6 +11,8 @@ import 'package:sqflite/sqflite.dart';
 
 import 'package:flutter/src/widgets/scroll_controller.dart';
 
+import 'home/Home.dart';
+
 void main() {
   runApp(
     const MyWidget(),
@@ -25,10 +27,14 @@ class MyWidget extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Login(),
+      theme: ThemeData(
+        primaryColor: Colors.red,
+      ),
       routes: {
         "login": (context) => Login(), // The main page
 
         "signup": (context) => SignUp(),
+        "home": (context) => Home(),
       },
     );
   }

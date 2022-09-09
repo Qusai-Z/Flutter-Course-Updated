@@ -55,12 +55,16 @@ class Login extends StatelessWidget {
                   }),
                   child: Text(
                     'أنشى حساب',
-                    style: TextStyle(color: Color.fromARGB(255, 33, 58, 243)),
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 33, 58, 243),
+                    ),
                   ),
                 ),
                 Text(
                   ' إذا لم يكن لديك حساب ',
-                  style: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 0, 0, 0),
+                  ),
                 ),
               ],
             ),
@@ -73,10 +77,15 @@ class Login extends StatelessWidget {
             child: MaterialButton(
               color: Colors.yellow,
               padding: EdgeInsets.all(10),
-              onPressed: () {},
+              onPressed: () {
+                //PushReplacementNamed : you can't go back if you press
+                Navigator.pushReplacementNamed(context, "home");
+              },
               child: Text(
                 'تسجيل دخول',
-                style: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+                style: TextStyle(
+                  color: Color.fromARGB(255, 0, 0, 0),
+                ),
               ),
             ),
           ),
