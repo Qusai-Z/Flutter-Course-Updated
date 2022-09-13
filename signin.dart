@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:young_yeader_ux/main.dart';
 
-class signup extends StatelessWidget {
-  const signup({Key? key}) : super(key: key);
+class signin extends StatelessWidget {
+  const signin({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +12,7 @@ class signup extends StatelessWidget {
           textDirection: TextDirection.rtl,
           child: Center(
             child: Text(
-              'إنشاء حساب جديد',
+              'تسجيل الدخول',
               style: TextStyle(fontSize: 25, fontFamily: 'Lalezar'),
             ),
           ),
@@ -58,34 +58,7 @@ class signup extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: 20,
-              ),
-              Container(
-                width: 330,
-                child: RawMaterialButton(
-                  child: Row(
-                    children: [
-                      Icon(Icons.arrow_drop_down),
-                      Text(
-                        'اختر الدولة',
-                        style: TextStyle(
-                            fontFamily: 'Lalezar',
-                            fontSize: 20,
-                            color: Colors.grey),
-                      )
-                    ],
-                  ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  onPressed: () {},
-                  elevation: 5.0,
-                  fillColor: Color.fromARGB(255, 255, 255, 255),
-                  padding: EdgeInsets.all(10.0),
-                ),
-              ),
-              SizedBox(
-                height: 30,
+                height: 40,
               ),
               Container(
                 width: 300,
@@ -114,62 +87,26 @@ class signup extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      ' أو اختر احدى الطرق التالية',
+                      ' ليس لديك حساب ؟',
                       style: TextStyle(
                         fontSize: 18,
                         fontFamily: 'Lalezar',
-                        color: Colors.blueAccent,
+                        color: Colors.grey,
+                      ),
+                    ),
+                    InkWell(
+                      onTap: (() {}),
+                      child: Text(
+                        '  أنشئ حساب الاّن ',
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontFamily: 'Lalezar',
+                            color: Colors.blueAccent),
                       ),
                     ),
                   ],
                 ),
               ),
-              SizedBox(
-                height: 60,
-              ),
-              Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    CircleAvatar(
-                      backgroundImage: AssetImage('imgs/fb.png'),
-                      radius: 30,
-                    ),
-                    CircleAvatar(
-                      radius: 30,
-                      backgroundImage: AssetImage('imgs/twitter.png'),
-                    ),
-                    CircleAvatar(
-                      backgroundImage: AssetImage('imgs/google.png'),
-                      radius: 30,
-                    )
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 50,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text('بتسجيلك أنت توافق على'),
-                  InkWell(
-                    onTap: (() {}),
-                    child: Text(
-                      ' الأحكام والشروط',
-                      style: TextStyle(color: Colors.orange),
-                    ),
-                  ),
-                  Text('و '),
-                  InkWell(
-                    onTap: (() {}),
-                    child: Text(
-                      'سياسة الخصوصية',
-                      style: TextStyle(color: Colors.orange),
-                    ),
-                  )
-                ],
-              )
             ],
           ),
         ),

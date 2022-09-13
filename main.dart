@@ -1,40 +1,26 @@
-import 'dart:ffi';
-
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:path/path.dart';
-import 'package:practice/auth/login.dart';
-import 'package:practice/auth/signup.dart';
-import 'package:practice/sqlfile.dart';
-import 'package:sqflite/sqflite.dart';
-
-import 'package:flutter/src/widgets/scroll_controller.dart';
-
-import 'home/Home.dart';
+import 'package:young_yeader_ux/SignUP_SignIN/signin.dart';
+import 'package:young_yeader_ux/SignUP_SignIN/signup.dart';
+import 'SignUP_SignIN/home.dart';
 
 void main() {
-  runApp(
-    const MyWidget(),
-  );
+  runApp(const MyApp());
 }
 
-class MyWidget extends StatelessWidget {
-  const MyWidget({Key? key}) : super(key: key);
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
 
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Login(),
-      theme: ThemeData(
-        primaryColor: Colors.red,
-      ),
+      theme: ThemeData(primaryColor: Colors.blueAccent),
+      home: home(),
       routes: {
-        "login": (context) => Login(), // The main page
-
-        "signup": (context) => SignUp(),
-        "home": (context) => Home(),
+        'HOME': (context) => home(),
+        'SIGNIN': (context) => signin(),
+        'SIGNUP': (context) => signup()
       },
     );
   }
