@@ -61,6 +61,24 @@ class signup extends StatelessWidget {
                 height: 20,
               ),
               Container(
+                width: 350,
+                child: TextField(
+                  decoration: InputDecoration(
+                      suffixIcon: Icon(Icons.lock_outline),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30.0),
+                      ),
+                      filled: true,
+                      hintStyle: TextStyle(color: Colors.grey[800]),
+                      labelText: "تأكيد كلمة المرور",
+                      fillColor: Colors.white70),
+                  maxLines: 1,
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Container(
                 width: 330,
                 child: RawMaterialButton(
                   child: Row(
@@ -147,12 +165,14 @@ class signup extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: 50,
+                height: 20,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('بتسجيلك أنت توافق على'),
+                  Text(
+                    'بتسجيلك أنت توافق على',
+                  ),
                   InkWell(
                     onTap: (() {}),
                     child: Text(
@@ -160,7 +180,9 @@ class signup extends StatelessWidget {
                       style: TextStyle(color: Colors.orange),
                     ),
                   ),
-                  Text('و '),
+                  Text(
+                    'و ',
+                  ),
                   InkWell(
                     onTap: (() {}),
                     child: Text(

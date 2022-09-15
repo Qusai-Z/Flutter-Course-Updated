@@ -21,13 +21,14 @@ class home extends StatelessWidget {
               width: 200,
               child: Divider(
                 thickness: 3,
+                color: Colors.white,
               ),
             ),
             SizedBox(
               height: 70,
             ),
             Container(
-              width: 300,
+              width: 270,
               child: RawMaterialButton(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30),
@@ -57,6 +58,31 @@ class home extends StatelessWidget {
                 style: TextStyle(
                     fontSize: 18, fontFamily: 'Lalezar', color: Colors.orange),
               ),
+            ),
+            SizedBox(
+              height: 70,
+            ),
+            Container(
+              width: 300,
+              child: RawMaterialButton(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                onPressed: () {
+                  Navigator.pushNamed(context, 'SIGNUP');
+                },
+                elevation: 5.0,
+                fillColor: Colors.red,
+                child: Text(
+                  'إبدأ مباشرة',
+                  style: TextStyle(
+                      color: Colors.white, fontSize: 25, fontFamily: 'Lalezar'),
+                ),
+                padding: EdgeInsets.all(10.0),
+              ),
+            ),
+            SizedBox(
+              height: 30,
             ),
           ],
         ),
