@@ -29,6 +29,17 @@ class _TestState extends State<Test> {
         );
   }
 
+  getSnapshot() async {
+    // updates the value immediately, no need to restart the application
+    FirebaseFirestore.instance.collection('users').snapshots().listen((event) {
+      event.docs.forEach((element) {
+        print('email : ${element.data()['email']}');
+        print('name : ${element.data()['name']}');
+        print('age : ${element.data()['age']}');
+      });
+    });
+  }
+
   getSpecificDoc() async {
     CollectionReference userRef =
         FirebaseFirestore.instance.collection('users');
@@ -47,9 +58,10 @@ class _TestState extends State<Test> {
   void initState() {
     super.initState();
 
-    getData(); //retrieve all docs
-    getFirstDoc();
-    getSpecificDoc();
+    // getData(); //retrieve all docs
+    // getFirstDoc();
+    // getSpecificDoc();
+    getSnapshot();
   }
 
   @override
