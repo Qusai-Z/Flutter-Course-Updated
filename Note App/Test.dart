@@ -40,6 +40,19 @@ class _TestState extends State<Test> {
     });
   }
 
+  Add_Data() async {
+    CollectionReference users = FirebaseFirestore.instance.collection('users');
+
+    users.doc('user_id(3)').set({
+      //Accept List
+
+      "name": "Faris",
+      "age": "25",
+      "email": "Faris@gmail.com",
+      "gender": "male",
+    });
+  }
+
   getSpecificDoc() async {
     CollectionReference userRef =
         FirebaseFirestore.instance.collection('users');
@@ -61,7 +74,8 @@ class _TestState extends State<Test> {
     // getData(); //retrieve all docs
     // getFirstDoc();
     // getSpecificDoc();
-    getSnapshot();
+    // getSnapshot();
+    Add_Data();
   }
 
   @override
