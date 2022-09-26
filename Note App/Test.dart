@@ -29,13 +29,27 @@ class _TestState extends State<Test> {
         );
   }
 
+  getSpecificDoc() async {
+    CollectionReference userRef =
+        FirebaseFirestore.instance.collection('users');
+    await userRef.where('score', isEqualTo: 60).get().then(
+          (value) => value.docs.forEach(
+            (element) {
+              print(
+                element.data(),
+              );
+            },
+          ),
+        );
+  }
+
   @override
   void initState() {
     super.initState();
-    print('==================================');
-    getData();
-    print('===================================');
+
+    getData(); //retrieve all docs
     getFirstDoc();
+    getSpecificDoc();
   }
 
   @override
