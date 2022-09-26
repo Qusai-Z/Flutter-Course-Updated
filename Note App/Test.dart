@@ -43,7 +43,7 @@ class _TestState extends State<Test> {
   Add_Data() async {
     CollectionReference users = FirebaseFirestore.instance.collection('users');
 
-    users.doc('user_id(3)').set({
+    await users.doc('user_id(3)').set({
       //Accept List
 
       "name": "Faris",
@@ -67,6 +67,12 @@ class _TestState extends State<Test> {
         );
   }
 
+  Update_data() async {
+    CollectionReference users = FirebaseFirestore.instance.collection('users');
+
+    await users.doc('user_id(3)').update({'age': 26});
+  }
+
   @override
   void initState() {
     super.initState();
@@ -75,7 +81,8 @@ class _TestState extends State<Test> {
     // getFirstDoc();
     // getSpecificDoc();
     // getSnapshot();
-    Add_Data();
+    //  Add_Data();
+    Update_data();
   }
 
   @override
