@@ -70,7 +70,24 @@ class _TestState extends State<Test> {
   Update_data() async {
     CollectionReference users = FirebaseFirestore.instance.collection('users');
 
-    await users.doc('user_id(3)').update({'age': 26});
+    await users.doc('user_id(3)').update({'age': 30});
+  }
+
+  Update_trans() async {
+    DocumentReference userDoc =
+        FirebaseFirestore.instance.collection('users').doc('user_id(1)');
+
+    FirebaseFirestore.instance.runTransaction((transaction) async {
+      DocumentSnapshot docSnap = await transaction.get(userDoc);
+
+      if (docSnap.exists) {
+        transaction.update(userDoc, {
+          "age": 29,
+        });
+      } else {
+        print('Failed');
+      }
+    });
   }
 
   @override
@@ -81,8 +98,9 @@ class _TestState extends State<Test> {
     // getFirstDoc();
     // getSpecificDoc();
     // getSnapshot();
-    //  Add_Data();
+    // Add_Data();
     Update_data();
+    Update_trans();
   }
 
   @override
