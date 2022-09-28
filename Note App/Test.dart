@@ -1,4 +1,3 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -10,6 +9,22 @@ class Test extends StatefulWidget {
 }
 
 class _TestState extends State<Test> {
+  CollectionReference userReff = FirebaseFirestore.instance.collection("users");
+
+  List fs_users = [];
+
+  DisplayData() async {
+    var response = await userReff.get();
+
+    response.docs.forEach((element) {
+      setState(() {
+        fs_users.add(
+          element.data(),
+        );
+      });
+    });
+  }
+
   getData() async {
     FirebaseFirestore.instance.collection('users').get().then((value) {
       value.docs.forEach((element) {
@@ -54,9 +69,9 @@ class _TestState extends State<Test> {
   }
 
   getSpecificDoc() async {
-    CollectionReference userRef =
+    CollectionReference userRef2 =
         FirebaseFirestore.instance.collection('users');
-    await userRef.where('score', isEqualTo: 60).get().then(
+    await userRef2.where('score', isEqualTo: 60).get().then(
           (value) => value.docs.forEach(
             (element) {
               print(
@@ -82,7 +97,7 @@ class _TestState extends State<Test> {
 
       if (docSnap.exists) {
         transaction.update(userDoc, {
-          "age": 29,
+          "phone": '055555',
         });
       } else {
         print('Failed');
@@ -99,20 +114,28 @@ class _TestState extends State<Test> {
     // getSpecificDoc();
     // getSnapshot();
     // Add_Data();
-    Update_data();
+    // Update_data();
     Update_trans();
+    DisplayData();
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: AppBar(
-          actions: [
-            Text('Testing Firebase'),
-          ],
-        ),
-      ),
+          appBar: AppBar(
+            title: Text('Testing Firebase'),
+          ),
+          body: ListView.builder(
+              itemCount: fs_users.length,
+              itemBuilder: (context, i) {
+                return ListTile(
+                  title: Text('${fs_users[i]['name']}'),
+                  subtitle: Text('${fs_users[i]['email']}'),
+                  trailing: Text('${fs_users[i]['phone']}'),
+                );
+              })),
     );
   }
 }
