@@ -1,5 +1,9 @@
+import 'dart:io';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:path/path.dart';
 
 class Test extends StatefulWidget {
   const Test({Key? key}) : super(key: key);
@@ -9,12 +13,39 @@ class Test extends StatefulWidget {
 }
 
 class _TestState extends State<Test> {
+  late File file;
+
+  var imagePicker = ImagePicker();
+
   CollectionReference userReff = FirebaseFirestore.instance.collection("users");
 
   CollectionReference userReff3 =
       FirebaseFirestore.instance.collection("notes");
 
   List fs_users = [];
+
+  UploadImage() async {
+    var imagePicked = await imagePicker.pickImage(source: ImageSource.camera);
+
+    if (imagePicked != null) {
+      file = File(imagePicked.path);
+      var imageName = basename(imagePicked.path);
+
+      //start upload
+
+      var refStorage = FirebaseStorage.instance.ref('images/$imageName');
+
+      await refStorage.putFile(file);
+
+      var url = refStorage.getDownloadURL();
+
+      print(url);
+
+      //End upload
+    } else {
+      print('Please choose image');
+    }
+  }
 
   Stream<QuerySnapshot<Map<String, dynamic>>> getDataViaStream() =>
       FirebaseFirestore.instance.collection('notes').snapshots();
@@ -103,7 +134,7 @@ class _TestState extends State<Test> {
 
       if (docSnap.exists) {
         transaction.update(userDoc, {
-          "phone": '055555',
+          "phone": '0555550',
         });
       } else {
         print('Failed');
@@ -130,31 +161,20 @@ class _TestState extends State<Test> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: AppBar(
-          title: Text('Testing Firebase'),
-        ),
-        body: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
-          stream: getDataViaStream(),
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              return ListView.builder(
-                itemCount: snapshot.data!.docs.length,
-                itemBuilder: (context, i) {
-                  return ListTile(
-                    title: Text('${snapshot.data!.docs[i]['title']}'),
-                    subtitle: Text('${snapshot.data!.docs[i]['description']}'),
-                    trailing: Text('${snapshot.data!.docs[i]['user_id']}'),
-                  );
+          appBar: AppBar(
+            title: Text('Testing Firebase'),
+          ),
+          body: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              MaterialButton(
+                onPressed: () {
+                  UploadImage();
                 },
-              );
-            }
-            if (snapshot.hasError) {
-              return Text('Error occuerd!');
-            }
-            return Center(child: CircularProgressIndicator());
-          },
-        ),
-      ),
+                child: Text('CHOOSE IMAGE'),
+              ),
+            ],
+          )),
     );
   }
 }
