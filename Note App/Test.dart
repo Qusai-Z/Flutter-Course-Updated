@@ -11,7 +11,13 @@ class Test extends StatefulWidget {
 class _TestState extends State<Test> {
   CollectionReference userReff = FirebaseFirestore.instance.collection("users");
 
+  CollectionReference userReff3 =
+      FirebaseFirestore.instance.collection("notes");
+
   List fs_users = [];
+
+  Stream<QuerySnapshot<Map<String, dynamic>>> getDataViaStream() =>
+      FirebaseFirestore.instance.collection('notes').snapshots();
 
   DisplayData() async {
     var response = await userReff.get();
@@ -124,18 +130,31 @@ class _TestState extends State<Test> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-          appBar: AppBar(
-            title: Text('Testing Firebase'),
-          ),
-          body: ListView.builder(
-              itemCount: fs_users.length,
-              itemBuilder: (context, i) {
-                return ListTile(
-                  title: Text('${fs_users[i]['name']}'),
-                  subtitle: Text('${fs_users[i]['email']}'),
-                  trailing: Text('${fs_users[i]['phone']}'),
-                );
-              })),
+        appBar: AppBar(
+          title: Text('Testing Firebase'),
+        ),
+        body: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
+          stream: getDataViaStream(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return ListView.builder(
+                itemCount: snapshot.data!.docs.length,
+                itemBuilder: (context, i) {
+                  return ListTile(
+                    title: Text('${snapshot.data!.docs[i]['title']}'),
+                    subtitle: Text('${snapshot.data!.docs[i]['description']}'),
+                    trailing: Text('${snapshot.data!.docs[i]['user_id']}'),
+                  );
+                },
+              );
+            }
+            if (snapshot.hasError) {
+              return Text('Error occuerd!');
+            }
+            return Center(child: CircularProgressIndicator());
+          },
+        ),
+      ),
     );
   }
 }
